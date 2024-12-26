@@ -11,6 +11,11 @@ import org.bridge.base.api.CommonResponseDto;
 import org.bridge.base.exception.CommonException;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 인증 없이 사용 가능한 API 모음
+ * /api/no-auth 경로로 통일하여 하나의 클래스에서 통합 관리
+ */
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -30,10 +35,5 @@ public class NoAuthRestController {
     @GetMapping("/manager/{managerId}")
     public CommonResponseDto<String> getManagerById(@PathVariable("managerId") String managerId) {
         return new CommonResponseDto<String>(true, managerService.getManager(managerId).getId());
-    }
-
-    @GetMapping("/test")
-    public CommonResponseDto<String> test() throws CommonException, InterruptedException {
-        return new CommonResponseDto<String>(true, noAuthService.hana("ccc", "1234"));
     }
 }

@@ -53,12 +53,4 @@ public class NoAuthService {
 
         return savedPassword.getId();
     }
-
-
-
-    // 패스워드 암호화 및 저장, 암호화된 패스워드의 ID 반환
-    @Transactional
-    public String hana(String password, String userId) throws CommonException {
-        return authClient.encodePassword(password);
-    }
 }
