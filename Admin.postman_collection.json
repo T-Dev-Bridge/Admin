@@ -1,0 +1,49 @@
+{
+	"info": {
+		"_postman_id": "015fa7dc-1721-435c-b1b5-89a6330f293d",
+		"name": "Admin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33428599"
+	},
+	"item": [
+		{
+			"name": "회원가입",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"admin\",\r\n    \"username\":\"admin\",\r\n    \"password\":\"123456a\",\r\n    \"email\":\"admin@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/admin/api/no-auth/signup"
+			},
+			"response": []
+		},
+		{
+			"name": "로그인",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"123456a\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/auth/api/auth/login"
+			},
+			"response": []
+		}
+	]
+}
