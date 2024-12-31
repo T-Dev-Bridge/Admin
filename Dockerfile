@@ -21,7 +21,7 @@ WORKDIR /work
 
 # JAR 파일을 컨테이너에 복사
 # (예: ./build/libs/your-application.jar 경로를 사용한다고 가정)
-COPY ./build/libs/dashBoard-0.0.1.jar /work/dashBoard-0.0.1.jar
+COPY ./build/libs/admin-0.0.0.jar /work/admin-0.0.0.jar
 
 # JAR 파일을 실행
-ENTRYPOINT ["java", "-jar", "/work/admin-0.0.1.jar"]
+ENTRYPOINT ["java", "-jar", "/work/admin-0.0.0.jar"]
