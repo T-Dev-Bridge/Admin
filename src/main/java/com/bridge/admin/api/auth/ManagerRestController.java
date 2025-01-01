@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/manager")
+@RequestMapping("/api/admin/manager")
 @Tag(name = "관리자", description = "관리자 관리")
 public class ManagerRestController extends CrudRestController<Manager, ManagerDto, String> {
     @Override
