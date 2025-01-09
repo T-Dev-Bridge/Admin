@@ -1,12 +1,11 @@
 package com.bridge.admin.service.auth;
 
 import com.bridge.admin.repository.rdb.auth.Password;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.bridge.base.config.DateUtil;
 import org.bridge.base.service.CrudDto;
+
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -32,8 +31,6 @@ public class PasswordDto extends CrudDto {
         return Password.builder()
                 .id(id)
                 .password(password)
-                .lastChangedTime(DateUtil.toLocalDateTime(lastChangedTime, DateUtil.DATETIME_FORMAT))
-                .expTime(DateUtil.toLocalDateTime(expTime, DateUtil.DATETIME_FORMAT))
                 .createdWho(super.getCreatedWho())
                 .build();
     }
