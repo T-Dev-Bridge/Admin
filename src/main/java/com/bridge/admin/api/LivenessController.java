@@ -8,6 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Circuit Breaker Health Check Endpoint
+ * Circuit Breaker: MSA Service 관리 기술
+ */
 @Slf4j
 @RestController
 @RequiredArgsConstructor
