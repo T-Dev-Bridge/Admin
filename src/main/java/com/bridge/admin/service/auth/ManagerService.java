@@ -68,9 +68,8 @@ public class ManagerService extends CrudService<Manager, ManagerDto, String> {
         return ((ManagerRepository) this.repository).findByUsername(username).map(ManagerDto::new).orElse(null);
     }
 
-    @Override
     @Transactional
-    public ManagerDto save(ManagerDto o, String userId) throws CommonException {
+    public ManagerDto saveWithPassword(ManagerDto o, String userId) throws CommonException {
         String encryptPassword = authClient.encodePassword(o.getPassword()).getData();
 
         PasswordDto passwordDto = new PasswordDto();
@@ -80,9 +79,6 @@ public class ManagerService extends CrudService<Manager, ManagerDto, String> {
 
         o.setPwdId(password.getId());
 
-        Manager entity = this.toEntity(o, userId);
-        Manager result = this.repository.saveAndFlush(entity);
-        this.entityManager.refresh(result);
-        return this.toDto(result, 0);
+        return this.save(o, userId);
     }
 }

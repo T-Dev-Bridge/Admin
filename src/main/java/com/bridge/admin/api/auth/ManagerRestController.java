@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.bridge.base.api.CommonResponseDto;
 import org.bridge.base.api.CrudRestController;
+import org.bridge.base.exception.CommonException;
 import org.bridge.base.service.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,6 +21,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/admin/manager")
 @Tag(name = "관리자", description = "관리자 관리")
 public class ManagerRestController extends CrudRestController<Manager, ManagerDto, String> {
+
+    private final ManagerService managerService;
+
     @Override
     @Autowired
     @Qualifier("managerService")
@@ -32,5 +36,13 @@ public class ManagerRestController extends CrudRestController<Manager, ManagerDt
     @GetMapping("/profile/{managerId}")
     public CommonResponseDto<ManagerDto> getManagerById(@PathVariable String managerId) {
         return new CommonResponseDto<ManagerDto>(true, ((ManagerService) service).getManager(managerId));
+    }
+
+    @Operation(summary = "관리자 회원 가입", description = "관리자 회원가입")
+    @PostMapping("/signup")
+    public CommonResponseDto<ManagerDto> signupManager(
+            @RequestBody ManagerDto dto, @RequestHeader("X-Authenticated-Username") String userId
+    ) throws CommonException {
+        return new CommonResponseDto<ManagerDto>(true, managerService.saveWithPassword(dto, userId));
     }
 }
