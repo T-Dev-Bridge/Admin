@@ -26,7 +26,7 @@ public class Manager extends CrudEntity {
     @Column(name = "password_id", nullable = false)
     private Long pwdId;
 
-    @OneToOne(optional = false, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY) // 우선 필수
+    @OneToOne(optional = false, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @NotFound(action = NotFoundAction.IGNORE)
     @JoinColumn(name = "password_id", referencedColumnName = "password_id", insertable = false, updatable = false)
     private Password password;
@@ -34,8 +34,7 @@ public class Manager extends CrudEntity {
     @Column(name = "role_id", nullable = false)
     private Long roleId;
 
-    @OneToOne(optional = false, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY) // 우선 필수
-    @NotFound(action = NotFoundAction.IGNORE)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id", referencedColumnName = "role_id", insertable = false, updatable = false)
     private Role role;
 

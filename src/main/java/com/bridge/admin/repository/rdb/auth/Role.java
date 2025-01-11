@@ -20,7 +20,7 @@ public class Role extends CrudEntity {
     @Column(name = "role_name", unique = true)
     private String name;
 
-    @Column(name = "rmk") // 주석
+    @Column(name = "rmk")
     private String rmk;
 
     @Builder
