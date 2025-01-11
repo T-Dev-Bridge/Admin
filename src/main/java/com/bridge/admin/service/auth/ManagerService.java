@@ -9,6 +9,8 @@ import org.bridge.base.repository.rdb.CrdRepository;
 import org.bridge.base.service.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,6 +29,20 @@ public class ManagerService extends CrudService<Manager, ManagerDto, String> {
         super(repository);
         this.passwordService = passwordService;
         this.authClient = authClient;
+    }
+
+    /**
+     * 검색 필드 추가, searchFields: 텍스트 검색을 수행할 Field 목록 ( Entity Column 명 )
+     * numberFields: 숫자 검색을 수행할 Field 목록
+     * InquiryService 에서 해당 로직 확인 가능
+     */
+    @EventListener(ApplicationReadyEvent.class)
+    public void init(){
+        this.searchFields = new String[]{"username", "id", "email"};
+
+        this.numberFields = new String[]{};
+
+        super.init();
     }
 
     @Override
