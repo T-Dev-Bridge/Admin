@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\":\"admin\",\r\n    \"username\":\"admin\",\r\n    \"password\":\"123456a\",\r\n    \"email\":\"admin@gmail.com\"\r\n}",
+					"raw": "{\r\n    \"id\":\"admin\",\r\n    \"username\":\"admin\",\r\n    \"password\":\"1234567a\",\r\n    \"email\":\"admin@gmail.com\",\r\n    \"roleId\":9999\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -34,7 +34,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"123456a\"\r\n}",
+					"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"1234567a\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
